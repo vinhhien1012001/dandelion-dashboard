@@ -80,7 +80,16 @@ declare interface TripCardProps {
   location: string;
   imageUrl: string;
   tags: string[];
-  price: string;
+  time: string;
+}
+
+declare interface BlogCardProps {
+  id: string;
+  name: string;
+  imageUrl: string;
+  tags: string[];
+  time: string;
+  content: string;
 }
 
 declare interface StatsCard {

@@ -1,18 +1,10 @@
-import { Header, StatsCard, TripCard } from "components";
+import { Header, StatsCard, BlogCard } from "components";
+import { dashboardStats, user, allBlogs } from "~/constants";
+
+const { totalUsers, usersJoined, totalBlogs, blogsCreated, userRole } =
+  dashboardStats;
 
 const Dashboard = () => {
-  const user = { name: "Tu Anh" };
-  const dashboardStats = {
-    totalUsers: 100,
-    usersJoined: { currentMonth: 50, lastMonth: 30 },
-    totalBlogs: 80,
-    blogsCreated: { currentMonth: 15, lastMonth: 20 },
-    userRole: { total: 85, currentMonth: 45, lastMonth: 40 },
-  };
-
-  const { totalUsers, usersJoined, totalBlogs, blogsCreated, userRole } =
-    dashboardStats;
-
   return (
     <main className="dashboard wrapper">
       <Header
@@ -42,7 +34,26 @@ const Dashboard = () => {
           />
         </div>
       </section>
-      <TripCard />
+
+      <section className="container">
+        <h1 className="text-xl font-bold text-dark-100">Created Blogs</h1>
+
+        <div className="trip-grid">
+          {allBlogs
+            .slice(0, 4)
+            .map(({ id, name, imageUrls, tags, estimatedTime, content }) => (
+              <BlogCard
+                key={id}
+                id={id.toString()}
+                name={name}
+                imageUrl={imageUrls[0]}
+                tags={tags}
+                time={estimatedTime}
+                content={content}
+              />
+            ))}
+        </div>
+      </section>
     </main>
   );
 };
