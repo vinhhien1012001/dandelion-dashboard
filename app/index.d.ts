@@ -84,7 +84,7 @@ declare interface TripCardProps {
 }
 
 declare interface StatsCard {
-  headerTitle: string;
+  title: string;
   total: number;
   lastMonthCount: number;
   currentMonthCount: number;
